@@ -1,0 +1,239 @@
+body{
+	background-color: #000;
+}
+#header{
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index: 9999;
+	padding: 15px 30px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	.logo{
+		display: block;
+		line-height: 0;
+		max-width: 150px;
+	}
+	.menu-lang-burger{
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+	.menu{
+		&-list{
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+		}
+		&-item{
+			list-style: none;
+			a{
+				font-size: 18px;
+				margin: 0px 15px;
+				color: $color-white;
+				&:hover{
+					text-decoration: underline;
+				}
+			}
+		}
+	}
+	.lang{
+		margin: 0 15px;
+		&-list{
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+		}
+		&-item{
+			list-style: none;
+			color: $color-white;
+			&:first-child{
+				&:after{
+					content: '|';
+				}
+			}
+			a{
+				margin: 0 5px;
+				color: $color-white;
+				&:hover{
+					text-decoration: underline;
+				}
+			}
+			&.active{
+				a{
+					text-decoration: underline;
+				}
+			}
+		}
+	}
+	.burger{
+		color: $color-white;
+		position: relative;
+		width: 25px;
+		height: 25px;
+		cursor: pointer;
+		&-icon{
+			&:before, &:after{
+				content: '';
+				position: absolute;
+				width: 25px;
+				height: 3px;
+				background-color: $color-white;
+			}
+			&:before{
+				top: 3px;
+			}
+			&:after{
+				top: 9px;
+			}
+		}
+		.more, .less{
+			font-size: 9px;
+			position: absolute;
+			top: 15px;
+			width: 100%;
+			text-align: center;
+		}
+		.more{
+
+		}
+		.less{
+			display: none;
+		}
+		&.open-menu{
+			.burger-icon{
+				&:before{
+					transform: rotate(135deg);
+				}
+				&:after{
+					top: 3px;
+					transform: rotate(-135deg);
+				}
+			}
+			.more{
+				display: none;
+			}
+			.less{
+				display: block;
+			}
+		}
+	}
+}
+
+.menu-popup{
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 999;
+	background-color: rgba(0,0,0,.8);
+	color: $color-white;
+	overflow: auto;
+	&-container{
+		max-width: 1140px;
+		width: 100%;
+		margin: auto;
+		padding: 75px 25px 25px;
+	}
+	&-row{
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		align-items: flex-end;
+	}
+	&-wrap{
+		background-color: $color-orange;
+		width: 50%;
+		padding: 35px 30px;
+		.title{
+			background-color: $color-black;
+			display: inline-block;
+			margin-left: -50px;
+			font-size: 24px;
+			font-weight: 700;
+			padding: 5px 10px;
+		}
+		.menu{
+			&-list{
+				margin-top: 20px;
+			}
+			&-item{
+				list-style: none;
+				a{
+					display: inline-block;
+					font-size: 24px;
+					margin-bottom: 10px;
+					&:after{
+						content: '\f178';
+						font-family: 'Font Awesome 5 Pro';
+						margin-left: 10px;
+						transition: all 0.3s ease;
+					}
+					&:hover{
+						&:after{
+							margin-left: 15px;
+						}
+					}
+				}
+			}
+		}
+	}
+	&-contact{
+		background-color: $color-white;
+		color: $color-black;
+		width: 50%;
+		margin-bottom: 45px;
+		padding: 25px 30px;
+		p{
+			font-size: 16px;
+			line-height: 21px;
+			b{
+				font-weight: 700;
+				margin-bottom: 10px;
+				display: inline-block;
+			}
+		}
+		.links{
+			margin-top: 10px;
+			p{
+				margin-bottom: 5px;
+			}
+			a{
+				color: $color-orange;
+				text-decoration: underline;
+				font-weight: 700;
+				&:hover{
+					text-decoration: none;
+				}
+			}
+		}
+	}
+}
+
+@media screen and (max-width: 767px) {
+	#header{
+		.menu{
+			display: none;
+		}
+	}
+	.menu-popup{
+		&-wrap{
+			width: 100%;
+		}
+		&-contact{
+			width: 100%;
+			margin-bottom: 0;
+		}
+	}
+}
+@media screen and (max-width: 425px) {
+	#header{
+		padding: 15px;
+		.logo{
+			max-width: 85px;
+		}
+	}
+}
